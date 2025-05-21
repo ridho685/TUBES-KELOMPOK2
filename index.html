@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SehatBersama - Portal Kesehatan</title>
+    <style>
+        /* Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #2c8aee;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #ffd700;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(Background\ home.avif);
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .hero-content h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #2c8aee;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #1a73e8;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        /* Articles */
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .article-card h2 {
+            color: #2c8aee;
+            margin-bottom: 10px;
+        }
+        
+        .article-card p {
+            margin-bottom: 15px;
+        }
+        
+        .article-card .meta {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Sidebar */
+        .sidebar-widget {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-widget h3 {
+            color: #2c8aee;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-widget ul {
+            list-style: none;
+        }
+        
+        .sidebar-widget ul li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .sidebar-widget ul li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .sidebar-widget ul li a:hover {
+            color: #2c8aee;
+        }
+        
+        /* Services Section */
+        .services {
+            margin-bottom: 40px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: #2c8aee;
+            margin-bottom: 15px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        /* About Section */
+        .about-content {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                Sehat<span>Bersama</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Kesehatan Anda Adalah Prioritas Kami</h1>
+            <p>Informasi kesehatan terpercaya dan layanan konsultasi dengan profesional</p>
+            <a href="#menu" class="btn">Lihat Layanan</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <section class="main-content">
+            <div class="articles">
+                <article class="article-card">
+                    <h2>10 Tips Hidup Sehat Setiap Hari</h2>
+                    <p class="meta">Ditulis oleh: Dr. Andy Wijaya |  20 Desember 2024</p>
+                    <p>1. Minum air putih yang cukup (minimal 8 gelas sehari) untuk menjaga metabolisme tubuh.</p>
+                    <p>2. Konsumsi makanan bergizi seimbang dengan porsi yang tepat antara karbohidrat, protein, dan sayuran.</p>
+                    <p>3. Olahraga rutin minimal 30 menit setiap hari, bisa berupa jalan cepat, bersepeda, atau senam.</p>
+                    <p>4. Istirahat yang cukup dengan tidur 7-8 jam sehari untuk regenerasi sel tubuh.</p>
+                    <p>5. Kelola stres dengan baik melalui meditasi, hobi, atau berbicara dengan orang terdekat.</p>
+                    <a href="#" class="btn">Baca Selengkapnya</a>
+                </article>
+                
+                <article class="article-card">
+                    <h2>Pentingnya Pemeriksaan Kesehatan Rutin</h2>
+                    <p class="meta">Ditulis oleh: Dr. Siti Rahayu | 10 Juni 2024</p>
+                    <p>Pemeriksaan kesehatan rutin (medical check-up) penting untuk mendeteksi dini berbagai penyakit sebelum gejala muncul. Dengan deteksi dini, pengobatan bisa lebih efektif dan biaya lebih hemat.</p>
+                    <p>Disarankan untuk melakukan pemeriksaan kesehatan minimal setahun sekali, terutama bagi yang berusia di atas 40 tahun atau memiliki riwayat penyakit tertentu dalam keluarga.</p>
+                    <a href="#" class="btn">Baca Selengkapnya</a>
+                </article>
+            </div>
+            
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>Konsultasi Online</h3>
+                    <ul>
+                        <li><a href="#">Konsultasi dengan Dokter Umum</a></li>
+                        <li><a href="#">Konsultasi Spesialis Jantung</a></li>
+                        <li><a href="#">Konsultasi Spesialis Anak</a></li>
+                        <li><a href="#">Konsultasi Gizi</a></li>
+                        <li><a href="#">Konsultasi Kesehatan Mental</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Direktori Dokter</h3>
+                    <ul>
+                        <li><a href="#">Dr. Andi Wijaya - Dokter Umum</a></li>
+                        <li><a href="#">Dr. Siti Rahayu - Spesialis Jantung</a></li>
+                        <li><a href="#">Dr. Bambang Susilo - Spesialis Anak</a></li>
+                        <li><a href="#">Dr. Dewi Kartini - Spesialis Gizi</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </section>
+        
+        <!-- Services Section -->
+        <section class="services" id="menu">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #2c8aee;">Layanan Kami</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Konsultasi Dokter</h3>
+                    <p>Konsultasi dengan dokter berpengalaman secara online maupun offline</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book-medical"></i>
+                    </div>
+                    <h3>Informasi Penyakit</h3>
+                    <p>Database lengkap tentang berbagai penyakit dan penanganannya</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Informasi Obat</h3>
+                    <p>Informasi lengkap tentang berbagai jenis obat dan penggunaannya</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <h3>Direktori Klinik</h3>
+                    <p>Informasi klinik dan rumah sakit terdekat di lokasi Anda</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="about-content">
+            <h2>Tentang SehatBersama</h2>
+            <p>SehatBersama adalah platform kesehatan online yang bertujuan memberikan informasi kesehatan yang akurat dan terpercaya kepada masyarakat Indonesia. Kami menyediakan berbagai layanan termasuk konsultasi dokter online, informasi penyakit dan obat, serta direktori dokter dan klinik.</p>
+            <p>Dibentuk pada tahun 2022, SehatBersama telah membantu ribuan orang dalam mendapatkan informasi kesehatan yang mereka butuhkan. Tim kami terdiri dari dokter-dokter profesional dan tenaga kesehatan yang berdedikasi untuk memberikan pelayanan terbaik.</p>
+            <p>Visi kami adalah menciptakan masyarakat Indonesia yang lebih sehat melalui akses informasi kesehatan yang mudah dan terjangkau.</p>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="kontak" class="contact-form">
+            <h2>Hubungi Kami</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subjek</label>
+                    <select id="subject">
+                        <option value="konsultasi">Konsultasi Kesehatan</option>
+                        <option value="informasi">Informasi Penyakit/Obat</option>
+                        <option value="saran">Saran/Kritik</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Pesan</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Kirim Pesan</button>
+            </form>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#menu">Menu</a>
+                <a href="#kontak">Kontak</a>
+            </div>
+            <p>&copy; 2022 SehatBersama. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
